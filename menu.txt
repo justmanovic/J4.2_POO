@@ -1,0 +1,8 @@
+Quelle action veux-tu effectuer ?
+
+a - chercher une meilleure arme
+s - chercher à se soigner 
+
+attaquer un joueur en vue :
+0 - Josiane a 10 points de vie
+1 - José a 10 points de vie
