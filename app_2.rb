@@ -27,17 +27,20 @@ while player_human.is_alive? && (player1.is_alive? || player2.is_alive?)
     # bot_attacked.show_state
     # if player1.is_alive? || player2.is_alive?
     if bots_array.length > 0
+        puts "La riposte ne se fait pas attendre..."
         bots_array.each do |bot|
             if bot.life_points <= 0 
                 bots_array.delete(bot)
             else
                 bot.attacks(player_human)
-                if player_human.is_dead?
-                    
-                end
+                sleep(2)
                 player_human.show_state
             end
         end 
+    end
+    10.times do
+        print "."
+        sleep(0.2)
     end
 end
 

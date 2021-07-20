@@ -1,5 +1,6 @@
 require 'pry'
 
+
 class Player
     attr_accessor :name, :life_points
     @@player_all = []
@@ -11,7 +12,7 @@ class Player
     end
 
     def show_state
-        @life_points > 0 ? "> #{@name} a #{@life_points} pv (show state) !" : "#{@name} est DCD"
+        @life_points > 0 ? "> #{@name} a #{@life_points} pv !" : "#{@name} est DCD"
     end
 
     def gets_damage(damage)
@@ -109,6 +110,10 @@ class HumanPlayer < Player
         end
         print " >>"
         choice = gets.chomp
+        10.times do
+            print "."
+            sleep(0.1)
+        end
         (!"as01".include? choice) ? choice_ok = 0 : choice_ok = 1
 
         while choice_ok == 0
