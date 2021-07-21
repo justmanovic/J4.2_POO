@@ -22,6 +22,12 @@ while player1.life_points > 0 && player2.life_points > 0
     end
 end
 
+if player1.is_alive? 
+    puts "L'humanité gagne !"
+else 
+    puts "Les robots gagnent... !"
+end
+
 puts puts puts "Il aura fallu #{count} tours pour terminer cette partie"
 Player.score_final(player1,player2)
 
