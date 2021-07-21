@@ -4,14 +4,15 @@ require 'pry'
 class Game
     attr_accessor :human_player, :enemies_in_sight, :player_left
 
-    def initialize(human_name_to_save)
+    def initialize(human_name_to_save, bots_number)
         @human_player = HumanPlayer.new(human_name_to_save)
         @enemies_in_sight = []
-        @player_left = 10
+        @player_left = bots_number
     end
 
     def kill_player(player)
         @enemies_in_sight = @enemies_in_sight - [player]
+        @player_left -= 1
     end
 
     def is_still_ongoing?
@@ -19,16 +20,17 @@ class Game
     end
 
     def new_players_in_sight
-        puts "Tous les joueurs sont en vue" if @enemies_in_sight.length == player_left
+        puts "Tous les joueurs sont en vue" if @enemies_in_sight.length == @player_left
 
         nb_new = [0,1,1,1,2,2]
         de = rand 1..6
 
-        # if (@enemies_in_sight.length + player_left) <= 10
-        nb_new[de-1].times do
-            @enemies_in_sight << Player.new("player-#{(rand 1..9999)}")
+        if @enemies_in_sight.length < @player_left
+            nb_new[de-1].times do
+                @enemies_in_sight << Player.new("player-#{(rand 1..9999)}")
+                break if @enemies_in_sight.length == @player_left
+            end
         end
-        # end
     
         nb_new[de-1] > 0 ? (puts "#{nb_new[de-1]} nouveau(x) joueur(s) arrive(nt)") : (puts "Aucun nouveau joueur n'arrive")
         

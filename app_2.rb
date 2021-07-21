@@ -22,10 +22,7 @@ bots_array = [player1,player2]
 
 while player_human.is_alive? && (player1.is_alive? || player2.is_alive?)
     choice = player_human.user_choice(bots_array)
-    # bots_array.length > 1 ? bot_attacked = bots_array[rand 0..1] : bot_attacked = bots_array[0]
-    # player_human.attacks(bot_attacked)
-    # bot_attacked.show_state
-    # if player1.is_alive? || player2.is_alive?
+
     if bots_array.length > 0
         puts "La riposte ne se fait pas attendre..."
         bots_array.each do |bot|
@@ -50,6 +47,3 @@ else
     puts "Les robots gagnent... ça sent pas bon !"
 end
 
-# binding.pry
-# puts "victoire_robot: #{victoire_robot} : #{(victoire_robot/500.00 * 100).ceil(2)}% de victoire "
-# puts "victoire_human: #{victoire_human} : #{(victoire_human/500.00 * 100).ceil(2)}% de victoire "
